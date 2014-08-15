@@ -1,0 +1,5 @@
+* Fri Aug 15 2014 Alfred Neumayer <dev.beidl@gmail.com> 0.0.1-1
+- Initial release
+- Select ISO file to boot a PC using a SailfishOS smartphone
+- Unmount ISO using Cover or Pulley menu
+
