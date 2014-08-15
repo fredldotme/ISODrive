@@ -1,7 +1,4 @@
-#ifdef QT_QML_DEBUG
 #include <QtQuick>
-#endif
-
 #include <sailfishapp.h>
 #include "filemanager.h"
 #include "isomanager.h"
