@@ -11,5 +11,9 @@
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>No ISO file in the &apos;Downloads&apos; folder</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

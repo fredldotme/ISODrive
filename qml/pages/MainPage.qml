@@ -49,7 +49,7 @@ Page {
                     text: isoList[index]
                     anchors.verticalCenter: parent.verticalCenter
                     //text.folor: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
-                    checked: isoManager.selectedISO == isoList[index]
+                    checked: isoManager.selectedISO === isoList[index]
 
                     onCheckedChanged: {
                         if(isoManager.selectedISO === isoList[index] && !checked) {
@@ -68,7 +68,7 @@ Page {
             Label {
                 id: noFileHint
                 anchors.centerIn: parent
-                text: "No ISO file in the Download folder"
+                text: qsTr("No ISO file in the 'Downloads' folder")
                 font.pixelSize: Theme.largeFontSize
                 visible: true
             }
