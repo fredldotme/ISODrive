@@ -1,11 +1,11 @@
 #ifndef FILEMANAGER_H
 #define FILEMANAGER_H
 
-#define DOWNLOADS_DIRECTORY "/home/nemo/Downloads/"
-
 #include <QObject>
 #include <QDebug>
 #include <QDir>
+#include <QStandardPaths>
+
 
 class FileManager : public QObject
 {

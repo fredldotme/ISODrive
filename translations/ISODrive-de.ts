@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.1">
 <context>
     <name>CoverPage</name>
     <message>
@@ -34,15 +34,11 @@
 <context>
     <name>MainPage</name>
     <message>
-        <source>Refresh file list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unmount ISO</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>ISOs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

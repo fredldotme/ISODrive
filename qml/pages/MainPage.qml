@@ -2,30 +2,38 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
-    property var isoList: fileManager.getISOFiles();
+    property var isoList;
+    property var selectedItem;
     id: page
+
+    Component.onCompleted: {
+        isoList = fileManager.getISOFiles();
+        noFileHint.visible = (isoList.count > 0)
+    }
+
+    Connections {
+        target: isoManager
+        onSelectedISOChanged: {
+            if(isoManager.selectedISO == "none" && selectedItem != undefined) {
+                selectedItem.checked = false
+            }
+        }
+    }
 
     SilicaFlickable {
         anchors.fill: parent
 
         PullDownMenu {
             MenuItem {
-                text: qsTr("Refresh file list")
+                text: qsTr("Refresh")
                 onClicked: {
                     isoList = fileManager.getISOFiles();
-                    console.log(isoManager.enabled());
-                }
-            }
-            MenuItem {
-                text: qsTr("Unmount ISO")
-                onClicked: {
-                    isoManager.resetISO();
+                    noFileHint.visible = (isoList.count > 0)
                 }
             }
         }
 
         SilicaListView {
-
             id: listView
             model: isoList
             anchors.fill: parent
@@ -35,18 +43,35 @@ Page {
             delegate: BackgroundItem {
                 id: delegate
 
-                Label {
+                TextSwitch {
+                    id: textSwitch
                     x: Theme.paddingLarge
                     text: isoList[index]
                     anchors.verticalCenter: parent.verticalCenter
-                    color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
-                }
-                onClicked: {
-                    console.log(isoList[index]);
-                    isoManager.enableISO(isoList[index]);
+                    //text.folor: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                    checked: isoManager.selectedISO == isoList[index]
+
+                    onCheckedChanged: {
+                        if(isoManager.selectedISO === isoList[index] && !checked) {
+                            isoManager.resetISO();
+                        }
+
+                        if(checked) {
+                            isoManager.enableISO(isoList[index]);
+                            selectedItem = textSwitch
+                        }
+                    }
                 }
             }
             VerticalScrollDecorator {}
+
+            Label {
+                id: noFileHint
+                anchors.centerIn: parent
+                text: "No ISO file in the Download folder"
+                font.pixelSize: Theme.largeFontSize
+                visible: true
+            }
         }
     }
 }

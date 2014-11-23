@@ -11,9 +11,10 @@ int main(int argc, char *argv[])
     qmlRegisterType<FileManager>("FileManager", 1, 0, "FileManager");
     qmlRegisterType<ISOManager>("ISOManager", 1, 0, "ISOManager");
 
-    view->setSource(SailfishApp::pathTo("qml/ISODrive.qml"));
+
     view->rootContext()->setContextProperty("fileManager", new FileManager());
     view->rootContext()->setContextProperty("isoManager", new ISOManager());
+    view->setSource(SailfishApp::pathTo("qml/ISODrive.qml"));
     view->showFullScreen();
 
     return app->exec();

@@ -11,7 +11,7 @@ void ISOManager::enableISO(QString fileName)
     if(enabled())
         setEnabled(false);
 
-    QString absolutePath = QString(DOWNLOADS_DIRECTORY) + fileName;
+    QString absolutePath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + "/" + fileName;
 
     QFile lunFileSysfs(SYSFS_LUN_FILE);
     lunFileSysfs.open(QFile::ReadWrite);
