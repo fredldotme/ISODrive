@@ -13,11 +13,11 @@ Name:       ISODrive
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    ISODrive
-Version:    0.1
+Version:    0.2
 Release:    1
 Group:      Qt/Qt
-License:    LICENSE
-URL:        http://example.org/
+License:    GPLv2
+URL:        http://github.com/beidl/ISODrive
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  ISODrive.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
