@@ -3,18 +3,18 @@ import Sailfish.Silica 1.0
 
 Page {
     property var isoList;
-    property var selectedItem;
+    property TextSwitch selectedItem;
     id: page
 
     Component.onCompleted: {
         isoList = fileManager.getISOFiles();
-        noFileHint.visible = (isoList.count > 0)
+        noFileHint.visible = (isoList.length  === 0);
     }
 
     Connections {
         target: isoManager
         onSelectedISOChanged: {
-            if(isoManager.selectedISO == "none" && selectedItem != undefined) {
+            if(isoManager.selectedISO == "" && selectedItem != undefined) {
                 selectedItem.checked = false
             }
         }
@@ -28,7 +28,7 @@ Page {
                 text: qsTr("Refresh")
                 onClicked: {
                     isoList = fileManager.getISOFiles();
-                    noFileHint.visible = (isoList.count > 0)
+                    noFileHint.visible = (isoList.length  === 0);
                 }
             }
         }
@@ -48,17 +48,23 @@ Page {
                     x: Theme.paddingLarge
                     text: isoList[index]
                     anchors.verticalCenter: parent.verticalCenter
-                    //text.folor: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
                     checked: isoManager.selectedISO === isoList[index]
 
-                    onCheckedChanged: {
+                    onClicked: {
+                        if(selectedItem != undefined){
+                            selectedItem.checked = false;
+                        }
+                        selectedItem = textSwitch;
+
                         if(isoManager.selectedISO === isoList[index] && !checked) {
                             isoManager.resetISO();
                         }
 
                         if(checked) {
                             isoManager.enableISO(isoList[index]);
-                            selectedItem = textSwitch
+                            if(isoManager.selectedISO !== isoList[index]) {
+                                checked = false;
+                            }
                         }
                     }
                 }

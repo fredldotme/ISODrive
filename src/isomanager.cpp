@@ -64,5 +64,6 @@ QString ISOManager::getSelectedISO()
     lunFileSysfs.open(QFile::ReadWrite);
     QString content(lunFileSysfs.readAll());
     QString fileName = content.mid(content.lastIndexOf("/") + 1);
-    return fileName.isEmpty() ? "none" : fileName;
+    fileName = fileName.replace("\n", "");
+    return fileName.isEmpty() ? "" : fileName;
 }

@@ -3,26 +3,23 @@ import Sailfish.Silica 1.0
 
 CoverBackground {
 
-    Column {
+    Image {
+        id: icon
+        source: "image://theme/ISODrive"
         anchors.centerIn: parent
-
-        Row {
-            Label {
-                text: "Selected ISO:"
-            }
-        }
-
-        Row {
-            Label {
-                id: coverLabel
-                text: isoManager.selectedISO
-            }
-        }
     }
+
+    Label {
+        id: coverLabel
+        text: isoManager.selectedISO
+        wrapMode: Text.Wrap
+        anchors.centerIn: parent
+    }
+
 
     CoverActionList {
         id: coverAction
-        enabled: isoManager.selectedISO !== "none"
+        enabled: isoManager.selectedISO !== ""
 
         CoverAction {
             iconSource: "image://theme/icon-cover-cancel"
