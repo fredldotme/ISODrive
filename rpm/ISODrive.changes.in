@@ -1,3 +1,7 @@
+* Sam Mai 27 2017 Vladimir Ulrich <admin@evl.su> 0.2-2
+- Fixed suid problem on sailfish 2.1.0
+- Added Russian language
+
 * Sam Nov 29 2014 Alfred Neumayer <dev.beidl@gmail.com> 0.2-1
 - Fix TextSwitch selection
 - Correctly show the No File Hint

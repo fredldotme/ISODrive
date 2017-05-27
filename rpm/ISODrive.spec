@@ -14,7 +14,7 @@ Name:       ISODrive
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    ISODrive
 Version:    0.2
-Release:    1
+Release:    2
 Group:      Qt/Qt
 License:    GPLv2
 URL:        http://github.com/beidl/ISODrive
