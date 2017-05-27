@@ -5,6 +5,7 @@
 
 int main(int argc, char *argv[])
 {
+    QGuiApplication::setSetuidAllowed(true);
     QGuiApplication *app = SailfishApp::application(argc, argv);
     QQuickView *view = SailfishApp::createView();
 

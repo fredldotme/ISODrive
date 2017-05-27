@@ -18,7 +18,8 @@ OTHER_FILES += qml/ISODrive.qml \
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
-TRANSLATIONS += translations/ISODrive-de.ts
+TRANSLATIONS += translations/ISODrive-de.ts \
+    translations/ISODrive-ru.ts
 
 HEADERS += \
     src/filemanager.h \
