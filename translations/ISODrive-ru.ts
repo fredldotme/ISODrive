@@ -13,7 +13,7 @@
     </message>
     <message>
         <source>No ISO file in the &apos;Downloads&apos; folder</source>
-        <translation>Не найдены файлы ISO в директории &apos;Downloads&apos;</translation>
+        <translation>Ни одного образа в папке &apos;Загрузки&apos;</translation>
     </message>
 </context>
 </TS>

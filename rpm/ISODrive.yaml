@@ -1,7 +1,7 @@
 Name: ISODrive
 Summary: ISODrive
 Version: 0.2
-Release: 2
+Release: 3
 # The contents of the Group field should be one of the groups listed here:
 # http://gitorious.org/meego-developer-tools/spectacle/blobs/master/data/GROUPS
 Group: Qt/Qt
@@ -36,6 +36,7 @@ Requires:
 
 # All installed files
 Files:
+  - '%attr(4755,root,root) /usr/bin/ISODrive'
   - '%{_bindir}'
   - '%{_datadir}/%{name}'
   - '%{_datadir}/applications/%{name}.desktop'
