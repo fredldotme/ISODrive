@@ -23,6 +23,13 @@ Page {
     SilicaFlickable {
         anchors.fill: parent
 
+        ViewPlaceholder {
+            id: noFileHint
+            anchors.centerIn: parent
+            text: qsTr("No ISO file in the 'Downloads' folder")
+            enabled: listView.count == 0
+        }
+
         PullDownMenu {
             MenuItem {
                 text: qsTr("Refresh")
@@ -70,14 +77,6 @@ Page {
                 }
             }
             VerticalScrollDecorator {}
-
-            Label {
-                id: noFileHint
-                anchors.centerIn: parent
-                text: qsTr("No ISO file in the 'Downloads' folder")
-                font.pixelSize: Theme.largeFontSize
-                visible: true
-            }
         }
     }
 }
