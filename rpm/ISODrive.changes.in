@@ -1,3 +1,9 @@
+* Mit Jun 28 2017 Vladimir Ulrich <admin@evl.su> 0.2-3
+- Added Swedish language: thanks to @eson57 from github
+- Updated russian language.
+- Some build-related changes to deal with new translations
+- Also moved some spec variables to places where they should be
+
 * Sam Mai 27 2017 Vladimir Ulrich <admin@evl.su> 0.2-2
 - Fixed suid problem on sailfish 2.1.0
 - Added Russian language

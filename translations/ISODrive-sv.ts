@@ -5,15 +5,15 @@
     <name>MainPage</name>
     <message>
         <source>ISOs</source>
-        <translation>Образы</translation>
+        <translation>ISO-filer</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Обновить</translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <source>No ISO file in the &apos;Downloads&apos; folder</source>
-        <translation>Ни одного образа в папке &apos;Загрузки&apos;</translation>
+        <translation>Inga ISO-filer i &apos;Nerladdningsmappen&apos;</translation>
     </message>
 </context>
 </TS>
