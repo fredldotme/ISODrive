@@ -1,20 +1,34 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtSparql 1.0
 
 Page {
-    property var isoList;
     property TextSwitch selectedItem;
     id: page
 
+    SparqlListModel {
+        id: queryModel
+        objectName: "queryModel"
+
+        connection: SparqlConnection {
+            id:sparqlConnection;
+            objectName:"sparqlConnection";
+            driver:"QTRACKER_DIRECT"
+        }
+
+        query: "SELECT ?filePath ?fileName WHERE { ?fileUri a nfo:FileDataObject ; "+
+               "nie:url $filePath ; nfo:fileName ?fileName. " +
+               "FILTER (fn:ends-with(fn:lower-case(nfo:fileName(?fileUri)), '.iso')) }"
+    }
+
     Component.onCompleted: {
-        isoList = fileManager.getISOFiles();
-        noFileHint.visible = (isoList.length  === 0);
+        noFileHint.visible = (queryModel.length  === 0);
     }
 
     Connections {
         target: isoManager
         onSelectedISOChanged: {
-            if(isoManager.selectedISO == "" && selectedItem != undefined) {
+            if(isoManager.selectedISO.trim() == "" && selectedItem != undefined) {
                 selectedItem.checked = false
             }
         }
@@ -34,15 +48,15 @@ Page {
             MenuItem {
                 text: qsTr("Refresh")
                 onClicked: {
-                    isoList = fileManager.getISOFiles();
-                    noFileHint.visible = (isoList.length  === 0);
+                    queryModel.reload()
+                    noFileHint.visible = (queryModel.length  === 0);
                 }
             }
         }
 
         SilicaListView {
             id: listView
-            model: isoList
+            model: queryModel
             anchors.fill: parent
             header: PageHeader {
                 title: qsTr("ISOs")
@@ -53,9 +67,9 @@ Page {
                 TextSwitch {
                     id: textSwitch
                     x: Theme.paddingLarge
-                    text: isoList[index]
+                    text: fileName
                     anchors.verticalCenter: parent.verticalCenter
-                    checked: isoManager.selectedISO === isoList[index]
+                    checked: isoManager.isEnabledISO(filePath)
 
                     onClicked: {
                         if(selectedItem != undefined){
@@ -63,13 +77,13 @@ Page {
                         }
                         selectedItem = textSwitch;
 
-                        if(isoManager.selectedISO === isoList[index] && !checked) {
+                        if(isoManager.isEnabledISO(filePath) && !checked) {
                             isoManager.resetISO();
                         }
 
                         if(checked) {
-                            isoManager.enableISO(isoList[index]);
-                            if(isoManager.selectedISO !== isoList[index]) {
+                            isoManager.enableISO(filePath);
+                            if(!isoManager.isEnabledISO(filePath)) {
                                 checked = false;
                             }
                         }

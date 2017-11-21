@@ -1,9 +1,6 @@
 #ifndef ISOMANAGER_H
 #define ISOMANAGER_H
 
-#define SYSFS_ENABLE "/sys/devices/virtual/android_usb/android0/enable"
-#define SYSFS_LUN_FILE "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file"
-
 #include <QObject>
 #include <QFile>
 
@@ -15,6 +12,7 @@ public:
     Q_PROPERTY(QString selectedISO READ getSelectedISO NOTIFY selectedISOChanged)
 
     Q_INVOKABLE void enableISO(QString fileName);
+    Q_INVOKABLE bool isEnabledISO(QString fileName);
     Q_INVOKABLE void resetISO();
 
 private:

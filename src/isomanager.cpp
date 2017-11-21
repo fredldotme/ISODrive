@@ -1,5 +1,11 @@
 #include "isomanager.h"
 #include "filemanager.h"
+#include "usbstatesaver.h"
+
+#include <QUrl>
+
+#define SYSFS_ENABLE "/sys/devices/virtual/android_usb/android0/enable"
+#define SYSFS_LUN_FILE "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file"
 
 ISOManager::ISOManager(QObject *parent) :
     QObject(parent)
@@ -8,10 +14,13 @@ ISOManager::ISOManager(QObject *parent) :
 
 void ISOManager::enableISO(QString fileName)
 {
+    /*if (!UsbStateSaver::Instance()->forceUsbModeForIso())
+        return;*/
+
     if(enabled())
         setEnabled(false);
 
-    QString absolutePath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + "/" + fileName;
+    const QString absolutePath = fileName.mid(7);
 
     QFile lunFileSysfs(SYSFS_LUN_FILE);
     lunFileSysfs.open(QFile::ReadWrite);
@@ -34,9 +43,16 @@ void ISOManager::enableISO(QString fileName)
     setEnabled(true);
 }
 
+bool ISOManager::isEnabledISO(QString fileName)
+{
+    const QString absolutePath = fileName.mid(7);
+    return (absolutePath.compare(getSelectedISO(), Qt::CaseInsensitive) == 0);
+}
+
 void ISOManager::resetISO()
 {
     enableISO("");
+    //UsbStateSaver::Instance()->restoreUsbMode();
 }
 
 bool ISOManager::enabled()

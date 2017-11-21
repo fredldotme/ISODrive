@@ -19,7 +19,7 @@ CoverBackground {
 
     CoverActionList {
         id: coverAction
-        enabled: isoManager.selectedISO !== ""
+        enabled: isoManager.selectedISO.trim() !== ""
 
         CoverAction {
             iconSource: "image://theme/icon-cover-cancel"
