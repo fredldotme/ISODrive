@@ -1,10 +1,13 @@
 TARGET = ISODrive
 
-CONFIG += sailfishapp
+CONFIG += sailfishapp QtSparql
+QT += dbus
 
 SOURCES += src/ISODrive.cpp \
     src/filemanager.cpp \
-    src/isomanager.cpp
+    src/isomanager.cpp \
+    src/usbstatesaver.cpp \
+    src/usbmodedcomm.cpp
 
 OTHER_FILES += qml/ISODrive.qml \
     qml/cover/CoverPage.qml \
@@ -22,5 +25,6 @@ TRANSLATIONS += translations/ISODrive-*.ts
 
 HEADERS += \
     src/filemanager.h \
-    src/isomanager.h
-
+    src/isomanager.h \
+    src/usbstatesaver.h \
+    src/usbmodedcomm.h
