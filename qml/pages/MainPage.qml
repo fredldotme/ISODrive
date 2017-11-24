@@ -83,9 +83,7 @@ Page {
 
                         if(checked) {
                             isoManager.enableISO(filePath);
-                            if(!isoManager.isEnabledISO(filePath)) {
-                                checked = false;
-                            }
+                            checked = isoManager.isEnabledISO(filePath)
                         }
                     }
                 }
