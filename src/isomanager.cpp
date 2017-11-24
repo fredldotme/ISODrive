@@ -23,19 +23,20 @@ void ISOManager::enableISO(QString fileName)
     const QString absolutePath = fileName.mid(7);
 
     QFile lunFileSysfs(SYSFS_LUN_FILE);
-    lunFileSysfs.open(QFile::ReadWrite);
+    lunFileSysfs.open(QFile::ReadWrite | QFile::Truncate);
     if(!fileName.isEmpty()) {
         lunFileSysfs.write(absolutePath.toUtf8().data());
     } else {
-        lunFileSysfs.write(" ");
+        lunFileSysfs.reset();
+        lunFileSysfs.write(QByteArrayLiteral("\n"));
     }
     lunFileSysfs.flush();
     lunFileSysfs.close();
 
     emit selectedISOChanged();
 
-    lunFileSysfs.open(QFile::ReadWrite);
-    if(!fileName.isEmpty() && !QString(lunFileSysfs.readAll()).startsWith(absolutePath)) {
+    if(!lunFileSysfs.open(QFile::ReadWrite) ||
+            (!fileName.isEmpty() && !QString(lunFileSysfs.readAll()).startsWith(absolutePath))) {
         emit selectionFailed();
     }
     lunFileSysfs.close();
@@ -46,7 +47,7 @@ void ISOManager::enableISO(QString fileName)
 bool ISOManager::isEnabledISO(QString fileName)
 {
     const QString absolutePath = fileName.mid(7);
-    return (absolutePath.compare(getSelectedISO(), Qt::CaseInsensitive) == 0);
+    return (absolutePath.compare(getSelectedISOPath(), Qt::CaseInsensitive) == 0);
 }
 
 void ISOManager::resetISO()
@@ -74,12 +75,20 @@ void ISOManager::setEnabled(bool enabled)
     enableSysfs.close();
 }
 
-QString ISOManager::getSelectedISO()
+QString ISOManager::getSelectedISOPath()
 {
     QFile lunFileSysfs(SYSFS_LUN_FILE);
     lunFileSysfs.open(QFile::ReadWrite);
     QString content(lunFileSysfs.readAll());
+    QString fileName = content;
+    fileName = fileName.replace("\n", "");
+    return fileName.trimmed();
+}
+
+QString ISOManager::getSelectedISO()
+{
+    const QString content = getSelectedISOPath();
     QString fileName = content.mid(content.lastIndexOf("/") + 1);
     fileName = fileName.replace("\n", "");
-    return fileName.isEmpty() ? "" : fileName;
+    return fileName.trimmed();
 }

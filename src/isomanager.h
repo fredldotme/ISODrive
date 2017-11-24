@@ -19,6 +19,7 @@ private:
     bool enabled();
     void setEnabled(bool enabled);
     QString getSelectedISO();
+    QString getSelectedISOPath();
 
 signals:
     void selectedISOChanged();
