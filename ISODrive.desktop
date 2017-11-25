@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Icon=ISODrive
-Exec=sh -c "exec /usr/bin/ISODrive"
+Exec=/usr/bin/ISODrive
 Name=ISODrive
