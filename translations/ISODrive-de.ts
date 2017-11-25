@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>No ISO file found on the device or external storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine ISO-Datei auf dem Gerät oder externen Speicher gefunden</translation>
     </message>
 </context>
 </TS>
