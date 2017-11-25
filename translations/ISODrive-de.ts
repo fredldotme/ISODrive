@@ -12,8 +12,12 @@
         <translation>Neu laden</translation>
     </message>
     <message>
-        <source>No ISO file in the &apos;Downloads&apos; folder</source>
-        <translation>Keine ISO-Datei im &apos;Downloads&apos;-Ordner</translation>
+        <source>Eject</source>
+        <translation>Auswerfen</translation>
+    </message>
+    <message>
+        <source>No ISO file found on the device or external storage</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

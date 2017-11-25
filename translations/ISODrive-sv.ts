@@ -12,8 +12,12 @@
         <translation>Uppdatera</translation>
     </message>
     <message>
-        <source>No ISO file in the &apos;Downloads&apos; folder</source>
-        <translation>Inga ISO-filer i &apos;Nerladdningsmappen&apos;</translation>
+        <source>Eject</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No ISO file found on the device or external storage</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
