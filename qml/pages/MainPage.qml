@@ -40,11 +40,18 @@ Page {
         ViewPlaceholder {
             id: noFileHint
             anchors.centerIn: parent
-            text: qsTr("No ISO file in the 'Downloads' folder")
+            text: qsTr("No ISO file found on the device or external storage")
             enabled: listView.count == 0
         }
 
         PullDownMenu {
+            MenuItem {
+                text: qsTr("Eject")
+                enabled: (isoManager.selectedISO.trim() !== "")
+                onClicked: {
+                    isoManager.resetISO()
+                }
+            }
             MenuItem {
                 text: qsTr("Refresh")
                 onClicked: {
@@ -70,6 +77,12 @@ Page {
                     text: fileName
                     anchors.verticalCenter: parent.verticalCenter
                     checked: isoManager.isEnabledISO(filePath)
+
+                    Component.onCompleted: {
+                        if(isoManager.isEnabledISO(filePath)) {
+                            selectedItem = textSwitch;
+                        }
+                    }
 
                     onClicked: {
                         if(selectedItem != undefined){
