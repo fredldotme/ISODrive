@@ -13,11 +13,11 @@
     </message>
     <message>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>Отсоединить</translation>
     </message>
     <message>
         <source>No ISO file found on the device or external storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Не найдено ни одного образа</translation>
     </message>
 </context>
 </TS>
