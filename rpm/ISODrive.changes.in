@@ -1,3 +1,13 @@
+* Wed Feb 28 2018 Alfred Neumayer <dev.beidl@gmail.com> 0.4-1
+- Add Eject pulley menu
+- Change placeholder hint, mentioning external storage
+- Set the proper selectedItem after a refresh
+- Fix ghost application cover when starting
+
+* Fri Nov 24 2017 Alfred Neumayer <dev.beidl@gmail.com> 0.3-1
+- Fix resetting and checking activated iso
+- Find iso files via Tracker
+
 * Mit Jun 28 2017 Vladimir Ulrich <admin@evl.su> 0.2-3
 - Added Swedish language: thanks to @eson57 from github
 - Updated russian language.
