@@ -12,8 +12,10 @@ CoverBackground {
     Label {
         id: coverLabel
         text: isoManager.selectedISO
-        wrapMode: Text.Wrap
+        wrapMode: Text.WrapAnywhere
+        width: parent.width
         anchors.centerIn: parent
+        horizontalAlignment: Text.AlignHCenter
     }
 
 
