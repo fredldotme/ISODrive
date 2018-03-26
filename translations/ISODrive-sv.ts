@@ -13,11 +13,11 @@
     </message>
     <message>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>Mata ut</translation>
     </message>
     <message>
         <source>No ISO file found on the device or external storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen ISO-fil hittades på enheten eller extern lagring</translation>
     </message>
     <message>
         <source>Delete</source>
