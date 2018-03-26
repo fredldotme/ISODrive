@@ -19,5 +19,13 @@
         <source>No ISO file found on the device or external storage</source>
         <translation>Не найдено ни одного образа</translation>
     </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

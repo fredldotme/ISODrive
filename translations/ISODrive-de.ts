@@ -19,5 +19,13 @@
         <source>No ISO file found on the device or external storage</source>
         <translation>Keine ISO-Datei auf dem Gerät oder externen Speicher gefunden</translation>
     </message>
+    <message>
+        <source>Delete</source>
+        <translation>Löschen</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation>Lösche</translation>
+    </message>
 </context>
 </TS>
