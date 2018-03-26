@@ -13,6 +13,7 @@ class FileManager : public QObject
 public:
     FileManager(QObject *parent = 0);
     Q_INVOKABLE QStringList getISOFiles();
+    Q_INVOKABLE bool removeFile(const QString& filePath);
 
 signals:
 
