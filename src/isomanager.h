@@ -20,6 +20,9 @@ private:
     void setEnabled(bool enabled);
     QString getSelectedISO();
     QString getSelectedISOPath();
+    void enableISO_classic(QString fileName);
+    void enableISO_xperia10_2(QString fileName);
+    QString op_lunFileSysfs;
 
 signals:
     void selectedISOChanged();
