@@ -1,23 +1,21 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import QtSparql 1.0
+import QtDocGallery 5.0
 
 Page {
     id: page
 
-    SparqlListModel {
+    DocumentGalleryModel {
         id: queryModel
-        objectName: "queryModel"
-
-        connection: SparqlConnection {
-            id:sparqlConnection;
-            objectName: "sparqlConnection";
-            driver: "QTRACKER_DIRECT"
+        properties: ["url", "fileName"]
+        sortProperties: ["+fileName"]
+        rootType: DocumentGallery.File
+        filter: GalleryFilterUnion {
+            filters: [
+                GalleryEqualsFilter { property: "fileExtension"; value: "iso" },
+                GalleryEqualsFilter { property: "fileExtension"; value: "ISO" }
+            ]
         }
-
-        query: "SELECT ?filePath ?fileName WHERE { ?fileUri a nfo:FileDataObject ; "+
-               "nie:url $filePath ; nfo:fileName ?fileName. " +
-               "FILTER (fn:ends-with(fn:lower-case(nfo:fileName(?fileUri)), '.iso')) }"
     }
 
     Timer {
