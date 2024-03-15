@@ -56,8 +56,8 @@ Page {
                 function showRemorseItem() {
                     var idx = index
                     remorse.execute(delegate, qsTr("Deleting"), function() {
-                        var deleteSuccess = fileManager.removeFile(filePath)
-                        console.log("ISO file deletion success? " + deleteSuccess)
+                        var deleteSuccess = fileManager.removeFile(url)
+                        console.log(url+"ISO file deletion success? " + deleteSuccess)
                         delayedReload.restart();
                     }, 3000)
                 }
@@ -67,18 +67,18 @@ Page {
                     x: Theme.paddingLarge
                     text: fileName
                     anchors.verticalCenter: parent.verticalCenter
-                    checked: isoManager.isEnabledISO(filePath)
+                    checked: isoManager.isEnabledISO(url)
 
                     property var isoContextMenu : null
 
                     onClicked: {
-                        if(isoManager.isEnabledISO(filePath) && !checked) {
+                        if(isoManager.isEnabledISO(url) && !checked) {
                             isoManager.resetISO();
                         }
 
                         if(checked) {
-                            isoManager.enableISO(filePath);
-                            checked = isoManager.isEnabledISO(filePath)
+                            isoManager.enableISO(url);
+                            checked = isoManager.isEnabledISO(url)
                         }
                     }
 
