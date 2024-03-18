@@ -57,7 +57,7 @@ Page {
                     var idx = index
                     remorse.execute(delegate, qsTr("Deleting"), function() {
                         var deleteSuccess = fileManager.removeFile(url)
-                        console.log(url + "ISO file deletion success? " + deleteSuccess)
+                        console.log(url + " ISO file deletion success? " + deleteSuccess)
                         delayedReload.restart();
                     }, 3000)
                 }
